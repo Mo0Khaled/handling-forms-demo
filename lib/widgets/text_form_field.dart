@@ -68,7 +68,7 @@ class DefaultTextField extends StatelessWidget {
             cursorColor: const Color(0xFFE6E6FA),
             decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.grey.shade100,
+                fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey.shade400),
                   borderRadius: BorderRadius.circular(9),
