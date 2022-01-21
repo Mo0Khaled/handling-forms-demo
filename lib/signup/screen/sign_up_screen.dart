@@ -16,28 +16,32 @@ class SignUpScreen extends StatelessWidget {
         child: ListView(
           children: const [
             DefaultTextField(
-              title: "first name",
-              hintText: "Write Your first name",
+              title: "Name",
+              hintText: "Write Your Name",
               prefixIcon: Icons.person,
             ),
-            DefaultTextField(
-              title: "last name",
-              hintText: "Write Your last name",
-              prefixIcon: Icons.person,
+            SizedBox(
+              height: 15,
             ),
             DefaultTextField(
               title: "Email",
-              hintText: "Write Your email",
+              hintText: "Write Your Email",
               prefixIcon: Icons.mail,
+            ),
+            SizedBox(
+              height: 15,
             ),
             DefaultTextField(
               title: "Password",
-              hintText: "Write Your password",
+              hintText: "Write Your Password",
               prefixIcon: Icons.lock,
+            ),
+            SizedBox(
+              height: 15,
             ),
             DefaultTextField(
               title: "RePassword",
-              hintText: "Write Your password again",
+              hintText: "Write Your Password again",
               prefixIcon: Icons.lock,
             ),
           ],
