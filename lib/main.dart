@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
+      debugShowCheckedModeBanner: false,
       home: BlocProvider(
         create: (context) => SignUpCubit(),
         child: const SignUpScreen(),

@@ -3,40 +3,26 @@ import 'package:flutter/services.dart';
 
 class DefaultTextField extends StatelessWidget {
   final String title;
+  final String? errorText;
+
   final String? hintText;
   final bool? obscureText;
-  final TextEditingController? controller;
-  final double? height;
-  final TextAlign? textAlign;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
-  final String? Function(String value)? validator;
-  final String? Function(String? value)? onChange;
-  final FocusNode? focusNode;
-  final VoidCallback? onPress;
+  final String? Function(String? value)? onSave;
+
   final VoidCallback? suffixIconPress;
-  final int? makLength;
-  final TextInputType? textInputType;
-  final bool isFieldPassword;
 
   const DefaultTextField({
     Key? key,
     required this.title,
     this.hintText,
     this.obscureText = false,
-    this.controller,
-    this.height,
-    this.textAlign,
     this.prefixIcon,
     this.suffixIcon,
-    this.validator,
-    this.onChange,
-    this.focusNode,
-    this.onPress,
-    this.makLength,
-    this.textInputType,
-    this.isFieldPassword = false,
     this.suffixIconPress,
+    this.onSave,
+    this.errorText,
   }) : super(key: key);
 
   @override
@@ -52,21 +38,15 @@ class DefaultTextField extends StatelessWidget {
           height: 5,
         ),
         SizedBox(
-          height: height ?? 56,
           child: TextFormField(
-            keyboardType: textInputType,
-            inputFormatters: [
-              LengthLimitingTextInputFormatter(makLength),
-            ],
             obscuringCharacter: "*",
-            focusNode: focusNode,
-            onTap: onPress,
-            style: const TextStyle(
-              color: Color(0xFFE6E6FA),
-            ),
-            controller: controller,
             cursorColor: const Color(0xFFE6E6FA),
             decoration: InputDecoration(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                errorMaxLines: 2,
+                isDense: true,
+                errorText: errorText,
                 filled: true,
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
@@ -82,16 +62,14 @@ class DefaultTextField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 hintText: hintText,
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   fontSize: 15,
-                  color: Colors.grey.shade500,
+                  color: Colors.grey,
                 ),
                 prefixIcon: Icon(prefixIcon),
                 suffixIcon: Icon(suffixIcon)),
             obscureText: obscureText!,
-            validator: (v) => validator!(v!),
-            onChanged: onChange == null ? null : (v) => onChange!(v),
-            textAlign: textAlign ?? TextAlign.left,
+            onSaved: onSave == null ? null : (v) => onSave!(v),
           ),
         ),
       ],
